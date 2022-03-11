@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Davmardle/static/css/main.9400d18e.css",
+    "main.js": "/Davmardle/static/js/main.5a7067d6.js",
+    "index.html": "/Davmardle/index.html",
+    "main.9400d18e.css.map": "/Davmardle/static/css/main.9400d18e.css.map",
+    "main.5a7067d6.js.map": "/Davmardle/static/js/main.5a7067d6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9400d18e.css",
+    "static/js/main.5a7067d6.js"
+  ]
+}
