@@ -59,9 +59,9 @@ class App extends React.Component {
       return;
     }
 
-    // if (this.state.guessedWord === 6) {
-    //   window.alert()
-    // }
+    if (this.state.guessedWord === 5) {
+      window.alert("The word was", this.state.letters[this.state.guessedWord].join(''));
+    }
 
     this.setState({
       guessedWord: this.state.guessedWord + 1,
