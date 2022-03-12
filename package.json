@@ -11,9 +11,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-keyboard-event-handler": "^1.5.4",
+    "react-modal": "^3.14.4",
     "react-scripts": "5.0.0",
     "react-simple-keyboard": "^3.4.78",
-    "reactjs-popup": "^2.0.5",
     "simple-keyboard": "^3.4.61",
     "swipe-keyboard": "^2.2.388",
     "web-vitals": "^2.1.4"

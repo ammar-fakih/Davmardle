@@ -1,12 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import Popup from 'reactjs-popup';
 import Title from './Title';
 import Table from './Table';
 import Footer from './Footer';
 import OnKeyboard from './OnKeyboard';
-import Keyboard from 'react-simple-keyboard';
-import '../style.css';
+import Modal from './Modal';
 import papaparse from 'papaparse';
 
 class App extends React.Component {
@@ -29,10 +27,11 @@ class App extends React.Component {
     ],
     guessedLetters: [],
     targetWord: 'penis',
-    isOver: false,
+    gameState: "running",
     guessedWord: 0,
     guessedLetter: 0,
     bigDick: [],
+    smallDick: [],
     buttonAttributes: [],
     bThemes: [],
   };
@@ -67,17 +66,17 @@ class App extends React.Component {
 
     // win condition
     if (word === this.state.targetWord) {
-      window.alert('Fuck You!!!!! YOU WIN!!!');
+      // window.alert('Fuck You!!!!! YOU WIN!!!');
 
-      this.setState({ isOver: true });
+      this.setState({ gameState: "won" });
       return;
     }
 
     // game loss
     if (this.state.guessedWord === 5) {
-      window.alert(`The word was ${this.state.targetWord}`);
+      // window.alert(`The word was ${this.state.targetWord}`);
 
-      this.setState({ isOver: true });
+      this.setState({ gameState: "lost" });
       return;
     }
 
@@ -85,6 +84,42 @@ class App extends React.Component {
     this.setState({
       guessedWord: this.state.guessedWord + 1,
       guessedLetter: 0,
+    });
+  };
+
+  resetGame = async () => {
+    let bThemesCopy = [];
+
+    for (var bi = 0; bi < 26; ++bi) {
+      let c = String.fromCharCode('a'.charCodeAt(0) + bi);
+      bThemesCopy.push({ class: 'nothing', buttons: c });
+    }
+
+    var index = Math.floor(Math.random() * this.state.smallDick.length);
+    this.setState({
+      letters: [
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+      ],
+      colors: [
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+      ],
+      guessedLetters: [],
+      gameState: "running",
+      guessedWord: 0,
+      guessedLetter: 0,
+      buttonAttributes: [],
+      bThemes: bThemesCopy,
+      targetWord: this.state.smallDick[index]
     });
   };
 
@@ -178,6 +213,7 @@ class App extends React.Component {
 
         t.setState({
           bigDick: arr,
+          smallDick: arr,
           targetWord: arr[index],
         });
         console.log(arr[index]);
@@ -207,7 +243,7 @@ class App extends React.Component {
         <KeyboardEventHandler
           handleKeys={['alphabetic', 'enter', 'backspace']}
           onKeyEvent={key => {
-            if (!this.state.isOver) {
+            if (this.state.gameState === "running") {
               if (key === 'enter') {
                 this.enterWord();
               } else if (key === 'backspace') {
@@ -219,6 +255,7 @@ class App extends React.Component {
           }}
         />
         <Title />
+        <Modal resetGame={this.resetGame} targetWord={this.state.targetWord} gameState={this.state.gameState} />
         <Table letters={this.state.letters} colors={this.state.colors} />
         <OnKeyboard
           enterWord={this.enterWord}
@@ -226,7 +263,7 @@ class App extends React.Component {
           deleteLetter={this.deleteLetter}
           keyboard={this.state.keyboard}
           bThemes={this.state.bThemes}
-          highlightBoard={!this.state.isOver}
+          highlightBoard={this.state.gameState === "running"}
         />
         <Footer />
       </div>

@@ -16,20 +16,18 @@ const Table = state => {
                 <tr key={row}>
                   {[0, 1, 2, 3, 4].map(col => {
                     let colorName = '';
-                    if(colors[row][col] === 'g'){
-                      colorName = "bg-success";
-                    }
-                    else if(colors[row][col] === 'y'){
-                      colorName = "bg-warning";
-                    }
-                    else if(colors[row][col] === 'r'){
-                      colorName = "bg-secondary";
+                    if (colors[row][col] === 'g') {
+                      colorName = 'bg-success';
+                    } else if (colors[row][col] === 'y') {
+                      colorName = 'bg-warning';
+                    } else if (colors[row][col] === 'r') {
+                      colorName = 'bg-secondary';
                     }
                     return (
                       <td key={col} className={colorName}>
                         <div>
                           <span className="hidden">l</span>
-                            {letters[row][col]}
+                          {letters[row][col]}
                           <span className="hidden">l</span>
                         </div>
                       </td>
