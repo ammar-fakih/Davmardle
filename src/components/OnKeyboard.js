@@ -2,29 +2,38 @@ import React, { useState, useEffect } from 'react';
 import Keyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
 
-const OnKeyboard = ({ addLetter, deleteLetter, enterWord, bThemes }) => {
-  // this.state.keyboard.addButtonTheme("a b", "bg-success");
+const OnKeyboard = ({ addLetter, deleteLetter, enterWord, bThemes, highlightBoard }) => {
 
   const onKeyPress = key => {
-    if (key === '{backspace}') {
-      deleteLetter();
-    } else if (key === '{enter}') {
-      enterWord();
-    } else {
-      addLetter(key);
+    if(highlightBoard) {
+      if (key === '{backspace}') {
+        deleteLetter();
+      } else if (key === '{enter}') {
+        enterWord();
+      } else {
+        addLetter(key);
+      }
     }
   };
+
+  themes = []
+  for (var i = 0; i < bThemes.length; ++i) {
+    if(bThemes[i].class !== "nothing") {
+      themes.push(bThemes[i])
+    }
+  }
 
   return (
     <div className="container-fluid col-lg-7">
       <Keyboard
         // keyboardRef={r => keyboard.current = r}
         onKeyPress={onKeyPress}
-        theme={'simple-keyboard hg-theme-default bg-primary'}
+        theme={'simple-keyboard hg-theme-default'}
         layout={keyboardLayout.layout}
-        buttonTheme={bThemes}
-        physicalKeyboardHighlight={true}
+        buttonTheme={themes}
+        physicalKeyboardHighlight={highlightBoard}
         syncInstanceInputs={true}
+        // maxLength={"200px"}
       />
     </div>
   );
@@ -42,6 +51,5 @@ const keyboardLayout = {
   },
 };
 
-const bThemes = [];
 
-
+let themes = [];

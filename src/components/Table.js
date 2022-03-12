@@ -5,7 +5,7 @@ const Table = state => {
   let colors = state.colors;
   return (
     <div className="container-fluid col-lg-7">
-      <div className="table-responsive col-lg-10 mx-auto ">
+      <div className="table-responsive col-lg-10 mx-auto">
         <table
           id="table"
           className="table table-bordered"
