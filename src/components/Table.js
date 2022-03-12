@@ -4,11 +4,11 @@ const Table = state => {
   let letters = state.letters;
   let colors = state.colors;
   return (
-    <div className="container-fluid col-lg-10">
-      <div className="table-responsive col-lg-10 mx-auto">
+    <div className="container-fluid col-lg-7">
+      <div className="table-responsive col-lg-10 mx-auto ">
         <table
           id="table"
-          className="table table-bordered table-dark"
+          className="table table-bordered"
           style={{ fontSize: '3em' }}>
           <tbody>
             {[0, 1, 2, 3, 4, 5].map(row => {
