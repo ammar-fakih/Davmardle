@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactCardFlip from 'react-card-flip';
+import Card from './Card';
 
 const Table = state => {
   let letters = state.letters;
@@ -25,12 +26,13 @@ const Table = state => {
                       colorName = 'bg-secondary';
                     }
                     return (
-                      <td key={col} className={colorName}>
-                        <div>
+                      <td key={row + col} style={{padding: "6px", margin: "5px", border: 0}}>
+                        {/* <div>
                           <span className="hidden">l</span>
                           {letters[row][col]}
                           <span className="hidden">l</span>
-                        </div>
+                        </div> */}
+                        <Card colors={colors} letters={letters} row={row} col={col} colorName={colorName}/>
                       </td>
                     );
                   })}

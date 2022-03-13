@@ -1,11 +1,11 @@
-import React from "react";
-import ReactCardFlip from "react-card-flip";
+import React from 'react';
+import ReactCardFlip from 'react-card-flip';
 
 class Card extends React.Component {
   constructor() {
     super();
-      this.state = {
-      isFlipped: false
+    this.state = {
+      isFlipped: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -16,19 +16,23 @@ class Card extends React.Component {
   }
 
   render() {
+    let flip = this.props.colors[this.props.row][this.props.col] !== "";
+    this.state.isFlipped = flip;
     return (
-      <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-        <div>
-          This is the front of the card.
-          <button onClick={this.handleClick}>Click to flip</button>
+      <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical" flipSpeedFrontToBack={this.props.col * .2 + .6}>
+        <div style={{padding: "5px", backgroundColor: "#e3e3e3"}} >
+          <span className="hidden">l</span>
+          {this.props.letters[this.props.row][this.props.col]}
+          <span className="hidden">l</span>
         </div>
 
-        <div>
-          This is the back of the card.
-          <button onClick={this.handleClick}>Click to flip</button>
+        <div style={{padding: "5px"}} className={this.props.colorName}>
+          <span className="hidden">l</span>
+          {this.props.letters[this.props.row][this.props.col]}
+          <span className="hidden">l</span>
         </div>
       </ReactCardFlip>
-    )
+    );
   }
 }
 

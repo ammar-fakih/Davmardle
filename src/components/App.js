@@ -5,7 +5,7 @@ import Table from './Table';
 import Footer from './Footer';
 import OnKeyboard from './OnKeyboard';
 import Modal from './Modal';
-import {bigdick, smalldick} from "../info/Script"
+import { bigdick, smalldick } from '../info/Script';
 import papaparse from 'papaparse';
 
 class App extends React.Component {
@@ -28,7 +28,7 @@ class App extends React.Component {
     ],
     guessedLetters: [],
     targetWord: 'penis',
-    gameState: "running",
+    gameState: 'running',
     guessedWord: 0,
     guessedLetter: 0,
     bigDick: [],
@@ -47,6 +47,43 @@ class App extends React.Component {
       bThemesCopy.push({ class: 'nothing', buttons: c });
     }
     this.setState({ bThemes: bThemesCopy });
+  };
+
+  resetGame = async () => {
+    let bThemesCopy = [];
+
+    for (var bi = 0; bi < 26; ++bi) {
+      let c = String.fromCharCode('a'.charCodeAt(0) + bi);
+      bThemesCopy.push({ class: 'nothing', buttons: c });
+    }
+
+    var index = Math.floor(Math.random() * this.state.smallDick.length);
+    console.log(this.state.smallDick[index])
+    this.setState({
+      letters: [
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+      ],
+      colors: [
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+      ],
+      guessedLetters: [],
+      gameState: 'running',
+      guessedWord: 0,
+      guessedLetter: 0,
+      buttonAttributes: [],
+      bThemes: bThemesCopy,
+      targetWord: this.state.smallDick[index],
+    });
   };
 
   enterWord = () => {
@@ -70,7 +107,7 @@ class App extends React.Component {
     if (word === this.state.targetWord) {
       // window.alert('Fuck You!!!!! YOU WIN!!!');
 
-      this.setState({ gameState: "won" });
+      this.setState({ gameState: 'won' });
       return;
     }
 
@@ -78,7 +115,7 @@ class App extends React.Component {
     if (this.state.guessedWord === 5) {
       // window.alert(`The word was ${this.state.targetWord}`);
 
-      this.setState({ gameState: "lost" });
+      this.setState({ gameState: 'lost' });
       return;
     }
 
@@ -88,44 +125,6 @@ class App extends React.Component {
       guessedLetter: 0,
     });
   };
-
-  resetGame = async () => {
-    let bThemesCopy = [];
-
-    for (var bi = 0; bi < 26; ++bi) {
-      let c = String.fromCharCode('a'.charCodeAt(0) + bi);
-      bThemesCopy.push({ class: 'nothing', buttons: c });
-    }
-
-    var index = Math.floor(Math.random() * this.state.smallDick.length);
-    this.setState({
-      letters: [
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-      ],
-      colors: [
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-        ['', '', '', '', ''],
-      ],
-      guessedLetters: [],
-      gameState: "running",
-      guessedWord: 0,
-      guessedLetter: 0,
-      buttonAttributes: [],
-      bThemes: bThemesCopy,
-      targetWord: this.state.smallDick[index]
-    });
-  };
-
-
 
   setColors = word => {
     let colorCopy = this.state.colors;
@@ -168,7 +167,7 @@ class App extends React.Component {
   addLetter = value => {
     // console.log(value, ' was pressed');
 
-    if (this.state.guessedLetter === 5) {
+    if (this.state.guessedLetter > 4) {
       return;
     }
 
@@ -196,7 +195,6 @@ class App extends React.Component {
   };
 
   processDicks = () => {
-
     var index = Math.floor(Math.random() * smalldick.length);
 
     this.setState({
@@ -205,10 +203,6 @@ class App extends React.Component {
       targetWord: smalldick[index],
     });
     console.log(smalldick[index]);
-    console.log(smalldick)
-    console.log(bigdick)
-
-
 
     // let bigdick =
     //   'https://raw.githubusercontent.com/ggilestro/playground/main/wordle_strategy/wordle_words_accepted.txt';
@@ -229,13 +223,13 @@ class App extends React.Component {
 
     //     var index = Math.floor(Math.random() * arr.length);
 
-      //   t.setState({
-      //     bigDick: arr,
-      //     smallDick: arr,
-      //     targetWord: arr[index],
-      //   });
-      //   console.log(arr[index]);
-      // },
+    //   t.setState({
+    //     bigDick: arr,
+    //     smallDick: arr,
+    //     targetWord: arr[index],
+    //   });
+    //   console.log(arr[index]);
+    // },
     // });
 
     // papaparse.parse(bigdick, {
@@ -260,7 +254,7 @@ class App extends React.Component {
         <KeyboardEventHandler
           handleKeys={['alphabetic', 'enter', 'backspace']}
           onKeyEvent={key => {
-            if (this.state.gameState === "running") {
+            if (this.state.gameState === 'running') {
               if (key === 'enter') {
                 this.enterWord();
               } else if (key === 'backspace') {
@@ -272,7 +266,11 @@ class App extends React.Component {
           }}
         />
         <Title />
-        <Modal resetGame={this.resetGame} targetWord={this.state.targetWord} gameState={this.state.gameState} />
+        <Modal
+          resetGame={this.resetGame}
+          targetWord={this.state.targetWord}
+          gameState={this.state.gameState}
+        />
         <Table letters={this.state.letters} colors={this.state.colors} />
         <OnKeyboard
           enterWord={this.enterWord}
@@ -280,7 +278,7 @@ class App extends React.Component {
           deleteLetter={this.deleteLetter}
           keyboard={this.state.keyboard}
           bThemes={this.state.bThemes}
-          highlightBoard={this.state.gameState === "running"}
+          highlightBoard={this.state.gameState === 'running'}
         />
         <Footer />
       </div>
