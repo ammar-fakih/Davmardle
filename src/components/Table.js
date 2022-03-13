@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCardFlip from 'react-card-flip';
 
 const Table = state => {
   let letters = state.letters;
