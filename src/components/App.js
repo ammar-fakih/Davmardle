@@ -5,6 +5,7 @@ import Table from './Table';
 import Footer from './Footer';
 import OnKeyboard from './OnKeyboard';
 import Modal from './Modal';
+import dicts from "../info/Script"
 import papaparse from 'papaparse';
 
 class App extends React.Component {
@@ -30,14 +31,15 @@ class App extends React.Component {
     gameState: "running",
     guessedWord: 0,
     guessedLetter: 0,
-    bigDick: [],
-    smallDick: [],
+    bigDick: dicts.bigdick + dicts.smalldick,
+    smallDick: dicts.smalldick,
     buttonAttributes: [],
     bThemes: [],
   };
 
   componentDidMount = () => {
-    this.processDicks();
+    // this.processDicks();
+    // this.setState({smallDick: dicts.smalldick, bigDick: dicts.bigdick})
     let bThemesCopy = [];
 
     for (var bi = 0; bi < 26; ++bi) {
@@ -123,6 +125,8 @@ class App extends React.Component {
     });
   };
 
+
+
   setColors = word => {
     let colorCopy = this.state.colors;
     let remaining = new Array(26).fill(0);
@@ -192,6 +196,8 @@ class App extends React.Component {
   };
 
   processDicks = () => {
+
+    // this.setState({smallDick: dicts.smalldick, bigDick: dicts.bigdick})
     let bigdick =
       'https://raw.githubusercontent.com/ggilestro/playground/main/wordle_strategy/wordle_words_accepted.txt';
 
@@ -234,7 +240,6 @@ class App extends React.Component {
         });
       },
     });
-    return;
   };
 
   render() {
