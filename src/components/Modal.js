@@ -3,27 +3,32 @@ import ReactModal from 'react-modal';
 
 const Modal = ({ targetWord, gameState, resetGame }) => {
   return (
-    <div >
+    <div>
       <ReactModal
         ariaHideApp={false}
         style={wonStyle}
         isOpen={gameState === 'lost'}>
-        You lost. The word was <b>{targetWord}</b>.<br/><hr />
-        <button className="btn btn-dark" onClick={resetGame}>Play Again</button>
+        You lost. The word was <b>{targetWord}</b>.<br />
+        <hr />
+        <button className="btn btn-dark" onClick={resetGame}>
+          Play Again
+        </button>
       </ReactModal>
 
       <ReactModal
         ariaHideApp={false}
         isOpen={gameState === 'won'}
         style={wonStyle}
-        class={"modal"}>
-        You won! <br/><hr />
-        <button className="btn btn-dark" onClick={resetGame}>Play Again</button>
+        class={'modal'}>
+        You won! <br />
+        <hr />
+        <button className="btn btn-dark" onClick={resetGame}>
+          Play Again
+        </button>
       </ReactModal>
     </div>
   );
 };
-
 
 const wonStyle = {
   overlay: {
@@ -37,7 +42,7 @@ const wonStyle = {
   content: {
     position: 'absolute',
     top: '70%',
-    bottom: "auto",
+    bottom: 'auto',
     left: '20%',
     right: '20%',
     background: '#fafafa  ',
@@ -48,7 +53,7 @@ const wonStyle = {
     padding: '20px',
     textAlign: 'center',
     verticalAlign: 'middle',
-    boxShadow: "-2rem 2rem 2rem rgba(black, 0.2)"
+    boxShadow: '-2rem 2rem 2rem rgba(black, 0.2)',
   },
 };
 

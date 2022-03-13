@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Keyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
 
-const OnKeyboard = ({ addLetter, deleteLetter, enterWord, bThemes, highlightBoard }) => {
-
+const OnKeyboard = ({
+  addLetter,
+  deleteLetter,
+  enterWord,
+  bThemes,
+  highlightBoard,
+}) => {
   const onKeyPress = key => {
-    if(highlightBoard) {
+    if (highlightBoard) {
       if (key === '{backspace}') {
         deleteLetter();
       } else if (key === '{enter}') {
@@ -16,10 +21,10 @@ const OnKeyboard = ({ addLetter, deleteLetter, enterWord, bThemes, highlightBoar
     }
   };
 
-  themes = []
+  themes = [];
   for (var i = 0; i < bThemes.length; ++i) {
-    if(bThemes[i].class !== "nothing") {
-      themes.push(bThemes[i])
+    if (bThemes[i].class !== 'nothing') {
+      themes.push(bThemes[i]);
     }
   }
 
@@ -50,6 +55,5 @@ const keyboardLayout = {
     ],
   },
 };
-
 
 let themes = [];

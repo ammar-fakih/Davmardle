@@ -6,7 +6,7 @@ import Footer from './Footer';
 import OnKeyboard from './OnKeyboard';
 import Modal from './Modal';
 import { bigdick, smalldick } from '../info/Script';
-import papaparse from 'papaparse';
+// import papaparse from 'papaparse';
 
 class App extends React.Component {
   state = {
@@ -58,7 +58,7 @@ class App extends React.Component {
     }
 
     var index = Math.floor(Math.random() * this.state.smallDick.length);
-    console.log(this.state.smallDick[index])
+    console.log(this.state.smallDick[index]);
     this.setState({
       letters: [
         ['', '', '', '', ''],
