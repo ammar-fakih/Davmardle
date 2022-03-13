@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Davmardle/static/css/main.795b2e5d.css",
-    "main.js": "/Davmardle/static/js/main.cc9a3f76.js",
+    "main.css": "/Davmardle/static/css/main.ac7d43af.css",
+    "main.js": "/Davmardle/static/js/main.16420057.js",
     "index.html": "/Davmardle/index.html",
-    "main.795b2e5d.css.map": "/Davmardle/static/css/main.795b2e5d.css.map",
-    "main.cc9a3f76.js.map": "/Davmardle/static/js/main.cc9a3f76.js.map"
+    "main.ac7d43af.css.map": "/Davmardle/static/css/main.ac7d43af.css.map",
+    "main.16420057.js.map": "/Davmardle/static/js/main.16420057.js.map"
   },
   "entrypoints": [
-    "static/css/main.795b2e5d.css",
-    "static/js/main.cc9a3f76.js"
+    "static/css/main.ac7d43af.css",
+    "static/js/main.16420057.js"
   ]
 }
