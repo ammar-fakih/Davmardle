@@ -58,7 +58,7 @@ class App extends React.Component {
     }
 
     var index = Math.floor(Math.random() * this.state.smallDick.length);
-    console.log(this.state.smallDick[index])
+    console.log(this.state.smallDick[index]);
     this.setState({
       letters: [
         ['', '', '', '', ''],
@@ -126,7 +126,7 @@ class App extends React.Component {
     });
   };
 
-  setColors = word => {
+  setColors = (word) => {
     let colorCopy = this.state.colors;
     let remaining = new Array(26).fill(0);
     let a = 'a'.charCodeAt(0);
@@ -139,12 +139,14 @@ class App extends React.Component {
     // bthemes state copy
     let bth = this.state.bThemes;
 
-    for (var j = 0; j < 5; ++j) {
-      // set default colors
-      colorCopy[this.state.guessedWord][j] = 'r';
-      bth[word.charCodeAt(j) - a].class = 'n-letter';
+    // set default colors
+    for (i = 0; i < 5; ++i) {
+      colorCopy[this.state.guessedWord][i] = 'r';
+      bth[word.charCodeAt(i) - a].class = 'n-letter';
+    }
 
-      // green
+    // green
+    for (var j = 0; j < 5; ++j) {
       if (word.charAt(j) === this.state.targetWord.charAt(j)) {
         colorCopy[this.state.guessedWord][j] = 'g';
         remaining[word.charCodeAt(j) - a] -= 1;
@@ -164,7 +166,7 @@ class App extends React.Component {
     this.setState({});
   };
 
-  addLetter = value => {
+  addLetter = (value) => {
     // console.log(value, ' was pressed');
 
     if (this.state.guessedLetter > 4) {
@@ -253,7 +255,7 @@ class App extends React.Component {
       <div>
         <KeyboardEventHandler
           handleKeys={['alphabetic', 'enter', 'backspace']}
-          onKeyEvent={key => {
+          onKeyEvent={(key) => {
             if (this.state.gameState === 'running') {
               if (key === 'enter') {
                 this.enterWord();
