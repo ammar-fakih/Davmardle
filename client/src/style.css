@@ -1,0 +1,65 @@
+.center-text {
+  text-align: center;
+}
+
+#table td {
+  width: 20%;
+}
+#table td > div {
+  margin: auto;
+  text-align: center;
+  font-weight: bold;
+}
+
+body {
+  height: 100vh;
+}
+
+tr {
+  line-height: 5vh;
+  min-height: 5vh;
+  height: 5vh;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.nothing {
+}
+
+.n-letter,
+.y-letter,
+.g-letter {
+  color: white;
+}
+
+.n-letter {
+  background-color: #76818a !important;
+}
+.y-letter {
+  background-color: #b59f3b !important;
+}
+.g-letter {
+  background-color: #538d4e !important;
+}
+
+.n-letter:hover {
+  background-color: #818d96 !important;
+}
+.y-letter:hover {
+  background-color: #c2aa40 !important;
+}
+.g-letter:hover {
+  background-color: #5a9954 !important;
+}
+
+.n-letter:active {
+  background-color: #606970 !important;
+}
+.y-letter:active {
+  background-color: #9c8833 !important;
+}
+.g-letter:active {
+  background-color: #43733f !important;
+}
