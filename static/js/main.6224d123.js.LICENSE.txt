@@ -4,13 +4,6 @@ object-assign
 @license MIT
 */
 
-/* @license
-Papa Parse
-v5.3.1
-https://github.com/mholt/PapaParse
-License: MIT
-*/
-
 /*!
          * 
          *   simple-keyboard v3.4.61
