@@ -27,7 +27,7 @@ class App extends React.Component {
       ['', '', '', '', ''],
     ],
     guessedLetters: [],
-    targetWord: 'penis',
+    targetWord: '',
     gameState: 'running',
     guessedWord: 0,
     guessedLetter: 0,
@@ -39,6 +39,7 @@ class App extends React.Component {
 
   componentDidMount = () => {
     this.processDicks();
+
     // this.setState({smallDick: dicts.smalldick, bigDick: dicts.bigdick})
     let bThemesCopy = [];
 
